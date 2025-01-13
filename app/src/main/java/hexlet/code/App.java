@@ -9,14 +9,23 @@ public class App {
 
         System.out.println("Please enter the game number and press Enter."
                 + "\n1 - Greet"
+                + "\n2 - Even"
                 + "\n0 - Exit");
         System.out.print("Your choice: ");
         var userChoise = sc.nextInt();
         sc.nextLine();
 
 
-        if (userChoise == 1) {
-            Cli.sayHello();
+        switch (userChoise) {
+            case (1):
+//                Cli.sayHello();
+                break;
+            case (2):
+                Even.playGame();
+                break;
+            case (0):
+            default:
+                break;
         }
 
     }

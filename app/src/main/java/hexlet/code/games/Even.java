@@ -4,7 +4,6 @@ import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Even {
     private static int numberOfCorrectAnswers = 0;
@@ -36,8 +35,7 @@ public class Even {
 
             if (Engine.isCorrect(userAnswer, correctAnswer)) {
                 numberOfCorrectAnswers++;
-            }
-            else {
+            } else {
                 break;
             }
         }

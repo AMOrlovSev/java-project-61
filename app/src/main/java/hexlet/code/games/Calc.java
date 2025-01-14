@@ -4,7 +4,6 @@ import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Calc {
     private static int numberOfCorrectAnswers = 0;
@@ -47,8 +46,7 @@ public class Calc {
 
             if (Engine.isCorrect(userAnswer, correctAnswer)) {
                 numberOfCorrectAnswers++;
-            }
-            else {
+            } else {
                 break;
             }
         }
@@ -68,8 +66,8 @@ public class Calc {
         }
     }
 
-    private static int resultOperation(int num1, int num2, String operator) {
-        switch (operator) {
+    private static int resultOperation(int num1, int num2, String operationSign) {
+        switch (operationSign) {
             case ("-"):
                 return num1 - num2;
             case ("*"):

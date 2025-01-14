@@ -1,12 +1,15 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.Cli;
+import hexlet.code.Engine;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Even {
 
-    private static final int numberOfAttempts = 3;
-    private static final int maxRandomValue = 1000;
+    private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
+    private static int maxRandomValue = 1000;
     private static int randomValue;
 
     private static String userAnswer;

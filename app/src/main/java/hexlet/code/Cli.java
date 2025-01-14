@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Cli {
 
-    private String userName;
+    private static String userName;
 
-    public String getUserName() {
+    public static String getUserName() {
         return userName;
     }
 
-    public void sayHello() {
+    public static void sayHello() {
 
         Scanner sc = new Scanner(System.in);
 

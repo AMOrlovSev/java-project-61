@@ -7,9 +7,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Calc {
+    private static int numberOfCorrectAnswers = 0;
     private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
-    private static int maxRandomValue = 100;
 
+    private static int maxRandomValue = 100;
     private static int randomValue1;
     private static int randomValue2;
 
@@ -17,16 +18,16 @@ public class Calc {
     private static int randomOperation;
     private static String operator;
 
+    private static String question;
     private static String userAnswer;
     private static String correctAnswer;
 
     private static Random random = new Random();
-    private static Scanner scanner = new Scanner(System.in);
 
     public static void playGame() {
         Cli.sayHello();
 
-        int numberOfCorrectAnswers = 0;
+        numberOfCorrectAnswers = 0;
 
         System.out.println("What is the result of the expression?");
 
@@ -37,27 +38,22 @@ public class Calc {
             randomOperation = random.nextInt(totalOperations);
             operator = operation(randomOperation);
 
-            System.out.println("Question: " + randomValue1 + operator + randomValue2);
+            question = randomValue1 + operator + randomValue2;
+            Engine.sayQuestion(question);
 
-            System.out.print("Your answer: ");
-            userAnswer = scanner.nextLine();
+            userAnswer = Engine.askAnswer();
 
-            correctAnswer = String.valueOf(resultOperation(randomValue1, randomValue2, randomOperation));
+            correctAnswer = String.valueOf(resultOperation(randomValue1, randomValue2, operator));
 
-            if (userAnswer.toLowerCase().equals(correctAnswer)) {
+            if (Engine.isCorrect(userAnswer, correctAnswer)) {
                 numberOfCorrectAnswers++;
-                System.out.println("Correct!");
             }
             else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + Cli.getUserName());
                 break;
             }
         }
 
-        if (numberOfCorrectAnswers == numberOfAttempts) {
-            System.out.println("Congratulations, " + Cli.getUserName());
-        }
+        Engine.gameResult(numberOfCorrectAnswers, numberOfAttempts);
     }
 
     private static String operation(int value) {
@@ -72,13 +68,13 @@ public class Calc {
         }
     }
 
-    private static int resultOperation(int num1, int num2, int operation) {
-        switch (operation) {
-            case (1):
+    private static int resultOperation(int num1, int num2, String operator) {
+        switch (operator) {
+            case ("-"):
                 return num1 - num2;
-            case (2):
+            case ("*"):
                 return num1 * num2;
-            case (0):
+            case ("+"):
             default:
                 return num1 + num2;
         }

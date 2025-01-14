@@ -7,8 +7,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Even {
-
+    private static int numberOfCorrectAnswers = 0;
     private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
+
     private static int maxRandomValue = 1000;
     private static int randomValue;
 
@@ -16,38 +17,32 @@ public class Even {
     private static String correctAnswer;
 
     private static Random random = new Random();
-    private static Scanner scanner = new Scanner(System.in);
 
     public static void playGame() {
         Cli.sayHello();
 
-        int numberOfCorrectAnswers = 0;
+        numberOfCorrectAnswers = 0;
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 0; i < numberOfAttempts; i++) {
             randomValue = random.nextInt(maxRandomValue);
-            System.out.println("Question: " + randomValue);
 
-            System.out.print("Your answer: ");
-            userAnswer = scanner.nextLine();
+            Engine.sayQuestion(String.valueOf(randomValue));
+
+            userAnswer = Engine.askAnswer();
 
             correctAnswer = isEven(randomValue) ? "yes" : "no";
 
-            if (userAnswer.toLowerCase().equals(correctAnswer)) {
+            if (Engine.isCorrect(userAnswer, correctAnswer)) {
                 numberOfCorrectAnswers++;
-                System.out.println("Correct!");
             }
             else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + Cli.getUserName());
                 break;
             }
         }
 
-        if (numberOfCorrectAnswers == numberOfAttempts) {
-            System.out.println("Congratulations, " + Cli.getUserName());
-        }
+        Engine.gameResult(numberOfCorrectAnswers, numberOfAttempts);
     }
 
     private static boolean isEven(int value) {

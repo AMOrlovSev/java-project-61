@@ -3,5 +3,4 @@
 
 <a href="https://codeclimate.com/github/AMOrlovSev/java-project-61/maintainability"><img src="https://api.codeclimate.com/v1/badges/0fc5b2faf86ceb00bdbf/maintainability" /></a>
 
-Even
 [![asciicast](https://asciinema.org/a/698162.svg)](https://asciinema.org/a/698162)

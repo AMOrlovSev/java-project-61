@@ -7,6 +7,10 @@ public class Engine {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    public static void sayTask(String task) {
+        System.out.println(task);
+    }
+
     public static void sayQuestion(String question) {
         System.out.println("Question: " + question);
     }

@@ -22,7 +22,7 @@ public class Even {
 
         numberOfCorrectAnswers = 0;
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        Engine.sayTask("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 0; i < numberOfAttempts; i++) {
             randomValue = random.nextInt(maxRandomValue);

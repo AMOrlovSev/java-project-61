@@ -37,7 +37,7 @@ public class Calc {
             randomOperation = random.nextInt(totalOperations);
             operator = operation(randomOperation);
 
-            question = randomValue1 + operator + randomValue2;
+            question = randomValue1 + " " + operator + " " + randomValue2;
             Engine.sayQuestion(question);
 
             userAnswer = Engine.askAnswer();

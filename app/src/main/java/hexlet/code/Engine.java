@@ -33,7 +33,7 @@ public class Engine {
 
     public static void gameResult(int numberOfCorrectAnswers, int numberOfAttempts) {
         if (numberOfCorrectAnswers == numberOfAttempts) {
-            System.out.println("Congratulations, " + Cli.getUserName());
+            System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
     }
 }

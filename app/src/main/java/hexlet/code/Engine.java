@@ -26,7 +26,7 @@ public class Engine {
             return true;
         } else {
             System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-            System.out.println("Let's try again, " + Cli.getUserName());
+            System.out.println("Let's try again, " + Cli.getUserName() + "!");
             return false;
         }
     }

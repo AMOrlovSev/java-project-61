@@ -16,7 +16,7 @@ public class App {
     public static void playGame() {
         Scanner sc = new Scanner(System.in);
         String userChoise;
-        do {
+//        do {
             System.out.println("\nPlease enter the game number and press Enter."
                     + "\n1 - Greet"
                     + "\n2 - Even"
@@ -51,7 +51,7 @@ public class App {
                 default:
                     break;
             }
-        }
-        while (!userChoise.equals("0"));
+//        }
+//        while (!userChoise.equals("0"));
     }
 }

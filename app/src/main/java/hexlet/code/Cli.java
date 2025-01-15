@@ -18,6 +18,6 @@ public class Cli {
         System.out.print("May I have your name? ");
         userName = sc.nextLine();
 
-        System.out.println("Hello, " + userName);
+        System.out.println("Hello, " + userName + "1");
     }
 }

@@ -24,7 +24,13 @@ public class Prime {
 
         Engine.sayTask("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-        for (int i = 0; i < numberOfAttempts; i++) {
+        steps(numberOfAttempts);
+
+        Engine.gameResult(numberOfCorrectAnswers, numberOfAttempts);
+    }
+
+    private static void steps(int numberAttempts) {
+        for (int i = 0; i < numberAttempts; i++) {
             randomValue = random.nextInt(maxRandomValue);
 
             Engine.sayQuestion(String.valueOf(randomValue));
@@ -39,8 +45,6 @@ public class Prime {
                 break;
             }
         }
-
-        Engine.gameResult(numberOfCorrectAnswers, numberOfAttempts);
     }
 
     private static boolean isPrime(int value) {

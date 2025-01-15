@@ -10,7 +10,10 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        playGame();
+    }
 
+    public static void playGame() {
         Scanner sc = new Scanner(System.in);
         String userChoise;
         do {
@@ -50,7 +53,5 @@ public class App {
             }
         }
         while (!userChoise.equals("0"));
-
-
     }
 }

@@ -27,8 +27,8 @@ public class GCD {
         Engine.sayTask("Find the greatest common divisor of given numbers.");
 
         for (int i = 0; i < numberOfAttempts; i++) {
-            randomValue1 = 1 + random.nextInt(maxRandomValue);
-            randomValue2 = 1 + random.nextInt(maxRandomValue);
+            randomValue1 = random.nextInt(maxRandomValue);
+            randomValue2 = random.nextInt(maxRandomValue);
 
             question = randomValue1 + " " + randomValue2;
             Engine.sayQuestion(question);

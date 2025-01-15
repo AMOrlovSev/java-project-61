@@ -9,7 +9,7 @@ public class Prime {
     private static int numberOfCorrectAnswers = 0;
     private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
 
-    private static final int maxRandomValue = 1000;
+    private static final int MAX_RANDOM = 1000;
     private static int randomValue;
 
     private static String userAnswer;
@@ -31,7 +31,7 @@ public class Prime {
 
     private static void steps(int numberAttempts) {
         for (int i = 0; i < numberAttempts; i++) {
-            randomValue = random.nextInt(maxRandomValue);
+            randomValue = random.nextInt(MAX_RANDOM);
 
             Engine.sayQuestion(String.valueOf(randomValue));
 

@@ -9,11 +9,11 @@ public class Calc {
     private static int numberOfCorrectAnswers = 0;
     private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
 
-    private static int maxRandomValue = 100;
+    private static final int MAX_VALUE = 100;
     private static int randomValue1;
     private static int randomValue2;
 
-    private static int totalOperations = 3;
+    private static final int TOTAL_OPERATIONS = 3;
     private static int randomOperation;
     private static String operator;
 
@@ -31,10 +31,10 @@ public class Calc {
         Engine.sayTask("What is the result of the expression?");
 
         for (int i = 0; i < numberOfAttempts; i++) {
-            randomValue1 = random.nextInt(maxRandomValue);
-            randomValue2 = random.nextInt(maxRandomValue);
+            randomValue1 = random.nextInt(MAX_VALUE);
+            randomValue2 = random.nextInt(MAX_VALUE);
 
-            randomOperation = random.nextInt(totalOperations);
+            randomOperation = random.nextInt(TOTAL_OPERATIONS);
             operator = operation(randomOperation);
 
             question = randomValue1 + " " + operator + " " + randomValue2;

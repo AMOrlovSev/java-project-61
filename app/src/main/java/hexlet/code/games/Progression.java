@@ -10,15 +10,15 @@ public class Progression {
     private static int numberOfCorrectAnswers = 0;
     private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
 
-    private static int totalNumbers = 10;
+    private static final int TOTAL_NUMS = 10;
     private static String[] progression;
     private static int unknownRandomValue;
 
-    private static int maxRandomValue = 10;
+    private static final int MAX_VALUE = 10;
     private static int randomValue1;
 
-    private static int maxStep = 10;
-    private static int minStep = 2;
+    private static final int MAX_STEP = 10;
+    private static final int MIN_STEP = 2;
     private static int randomStep;
 
     private static String question;
@@ -35,12 +35,12 @@ public class Progression {
         Engine.sayTask("What number is missing in the progression?");
 
         for (int i = 0; i < numberOfAttempts; i++) {
-            randomValue1 = random.nextInt(maxRandomValue);
-            randomStep = minStep + (int) (Math.random() * ((maxStep - minStep) + 1));
+            randomValue1 = random.nextInt(MAX_VALUE);
+            randomStep = MIN_STEP + (int) (Math.random() * ((MAX_STEP - MIN_STEP) + 1));
 
-            progression = createProgression(totalNumbers, randomValue1, randomStep);
+            progression = createProgression(TOTAL_NUMS, randomValue1, randomStep);
 
-            unknownRandomValue = random.nextInt(totalNumbers);
+            unknownRandomValue = random.nextInt(TOTAL_NUMS);
 
             var temp = String.valueOf(progression[unknownRandomValue]);
 

@@ -9,7 +9,7 @@ public class Prime {
     private static int numberOfCorrectAnswers = 0;
     private static int numberOfAttempts = Engine.TOTAL_ATTEMP;
 
-    private static int maxRandomValue = 1000;
+    private static final int maxRandomValue = 1000;
     private static int randomValue;
 
     private static String userAnswer;

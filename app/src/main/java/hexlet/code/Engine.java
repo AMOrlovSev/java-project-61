@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
@@ -21,6 +22,7 @@ public class Engine {
     private static String finalResult;
 
     private static Scanner sc = new Scanner(System.in);
+    public static Random random = new Random();
 
     public static void playGame(String task, String[][] game) {
         successfulAttempts = 0;
@@ -33,7 +35,7 @@ public class Engine {
         gameResult();
     }
 
-    private static void sayHello() {
+    public static void sayHello() {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         userName = sc.nextLine();
@@ -67,11 +69,11 @@ public class Engine {
         }
     }
 
-    public static void sayQuestion(String question) {
+    private static void sayQuestion(String question) {
         System.out.println("Question: " + question);
     }
 
-    public static String askAnswer() {
+    private static String askAnswer() {
         System.out.print("Your answer: ");
         return sc.nextLine();
     }
@@ -80,7 +82,7 @@ public class Engine {
         return userAnswer.equalsIgnoreCase(correctAnswer);
     }
 
-    public static void attemptResult(boolean corect, String userAnswer, String correctAnswer) {
+    private static void attemptResult(boolean corect, String userAnswer, String correctAnswer) {
         if (corect) {
             System.out.println("Correct!");
         } else {

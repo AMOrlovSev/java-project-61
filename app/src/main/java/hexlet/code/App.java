@@ -26,7 +26,7 @@ public class App {
 
             switch (userChoise) {
                 case ("1"):
-                    Cli.sayHello();
+                    Engine.sayHello();
                     break;
                 case ("2"):
                     Even.playGame();

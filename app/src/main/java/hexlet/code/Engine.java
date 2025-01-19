@@ -1,6 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -30,17 +34,28 @@ public class Engine {
         return random;
     }
 
-    private static final String gameVariants = "\nPlease enter the game number and press Enter."
-                    + "\n1 - Greet"
-                    + "\n2 - Even"
-                    + "\n3 - Calc"
-                    + "\n4 - GCD"
-                    + "\n5 - Progression"
-                    + "\n6 - Prime"
-                    + "\n0 - Exit";
+//    public static void printGameVariants() {
+//        System.out.println("\nPlease enter the game number and press Enter."
+//                + "\n1 - Greet"
+//                + "\n2 - Even"
+//                + "\n3 - Calc"
+//                + "\n4 - GCD"
+//                + "\n5 - Progression"
+//                + "\n6 - Prime"
+//                + "\n0 - Exit");
+//    }
 
-    public static String getGameVariants() {
-        return gameVariants;
+    public static void printGameVariants() {
+        System.out.println("""
+                
+                Please enter the game number and press Enter.
+                1 - Greet
+                2 - Even
+                3 - Calc
+                4 - GCD
+                5 - Progression
+                6 - Prime
+                0 - Exit""");
     }
 
     public static void startGame(String choise) {

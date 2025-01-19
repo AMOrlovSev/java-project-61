@@ -1,11 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Prime;
-import hexlet.code.games.Progression;
-
 import java.util.Scanner;
 
 public class App {
@@ -17,7 +11,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String userChoise;
 
-        System.out.println(Engine.getGameVariants());
+        Engine.printGameVariants();
 
         System.out.print("Your choice: ");
         userChoise = sc.nextLine();

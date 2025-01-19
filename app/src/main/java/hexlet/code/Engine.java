@@ -33,58 +33,10 @@ public class Engine {
     public static Random getRandom() {
         return random;
     }
+    
+    
 
-    public static void printGameVariants() {
-        System.out.println("\nPlease enter the game number and press Enter."
-                + "\n1 - Greet"
-                + "\n2 - Even"
-                + "\n3 - Calc"
-                + "\n4 - GCD"
-                + "\n5 - Progression"
-                + "\n6 - Prime"
-                + "\n0 - Exit");
-    }
-
-//    public static void printGameVariants() {
-//        System.out.println("""
-//
-//                Please enter the game number and press Enter.
-//                1 - Greet
-//                2 - Even
-//                3 - Calc
-//                4 - GCD
-//                5 - Progression
-//                6 - Prime
-//                0 - Exit""");
-//    }
-
-    public static void startGame(String choise) {
-        switch (choise) {
-            case ("1"):
-                Engine.sayHello();
-                break;
-            case ("2"):
-                Even.playGame();
-                break;
-            case ("3"):
-                Calc.playGame();
-                break;
-            case ("4"):
-                GCD.playGame();
-                break;
-            case ("5"):
-                Progression.playGame();
-                break;
-            case ("6"):
-                Prime.playGame();
-                break;
-            case ("0"):
-            default:
-                break;
-        }
-    }
-
-    public static void playGame(String task, String[][] game) {
+    public static void run(String task, String[][] game) {
         successfulAttempts = 0;
 
         sayHello();

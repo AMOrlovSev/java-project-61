@@ -17,7 +17,7 @@ public class Even {
 
     public static void playGame() {
         gameQustionAnswer = fillQuestionAnswer();
-        Engine.playGame(task, gameQustionAnswer);
+        Engine.run(task, gameQustionAnswer);
     }
 
     private static String[][] fillQuestionAnswer() {

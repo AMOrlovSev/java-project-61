@@ -142,11 +142,11 @@ public class Engine {
         return gameUserAnswer.equalsIgnoreCase(gameCorrectAnswer);
     }
 
-    private static void attemptResult(boolean gameCorect, String gameUserAnswer, String gameCorrectAnswer) {
-        if (gameCorect) {
+    private static void attemptResult(boolean gCorect, String gUserAnswer, String gCorAnswer) {
+        if (gCorect) {
             System.out.println("Correct!");
         } else {
-            System.out.println("'" + gameUserAnswer + "' is wrong answer ;(. Correct answer was '" + gameCorrectAnswer + "'.");
+            System.out.println("'" + gUserAnswer + "' is wrong answer ;(. Correct answer was '" + gCorAnswer + "'.");
         }
     }
 

@@ -1,12 +1,11 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
 
 public class Prime {
-    static String task = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static String task = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     private static String[][] gameQustionAnswer;
     private static String question;
@@ -14,7 +13,7 @@ public class Prime {
 
     private static final int MAX_RANDOM = 1000;
     private static int randomValue;
-    private static Random random = Engine.random;
+    private static Random random = Engine.getRandom();
 
     public static void playGame() {
         gameQustionAnswer = fillQuestionAnswer();

@@ -1,13 +1,12 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Arrays;
 import java.util.Random;
 
 public class Progression {
-    static String task = "What number is missing in the progression?";
+    private static String task = "What number is missing in the progression?";
 
     private static String[][] gameQustionAnswer;
     private static String question;
@@ -24,7 +23,7 @@ public class Progression {
     private static final int MIN_STEP = 2;
     private static int randomStep;
 
-    private static Random random = Engine.random;
+    private static Random random = Engine.getRandom();
 
     public static void playGame() {
         gameQustionAnswer = fillQuestionAnswer();

@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.games.*;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,7 +24,50 @@ public class Engine {
     private static String finalResult;
 
     private static Scanner sc = new Scanner(System.in);
-    public static Random random = new Random();
+    private static Random random = new Random();
+
+    public static Random getRandom() {
+        return random;
+    }
+
+    private static final String gameVariants = "\nPlease enter the game number and press Enter."
+                    + "\n1 - Greet"
+                    + "\n2 - Even"
+                    + "\n3 - Calc"
+                    + "\n4 - GCD"
+                    + "\n5 - Progression"
+                    + "\n6 - Prime"
+                    + "\n0 - Exit";
+
+    public static String getGameVariants() {
+        return gameVariants;
+    }
+
+    public static void startGame(String choise) {
+        switch (choise) {
+            case ("1"):
+                Engine.sayHello();
+                break;
+            case ("2"):
+                Even.playGame();
+                break;
+            case ("3"):
+                Calc.playGame();
+                break;
+            case ("4"):
+                GCD.playGame();
+                break;
+            case ("5"):
+                Progression.playGame();
+                break;
+            case ("6"):
+                Prime.playGame();
+                break;
+            case ("0"):
+            default:
+                break;
+        }
+    }
 
     public static void playGame(String task, String[][] game) {
         successfulAttempts = 0;
@@ -69,8 +114,8 @@ public class Engine {
         }
     }
 
-    private static void sayQuestion(String question) {
-        System.out.println("Question: " + question);
+    private static void sayQuestion(String gameQuestion) {
+        System.out.println("Question: " + gameQuestion);
     }
 
     private static String askAnswer() {
@@ -78,15 +123,15 @@ public class Engine {
         return sc.nextLine();
     }
 
-    private static boolean isCorrect(String userAnswer, String correctAnswer) {
-        return userAnswer.equalsIgnoreCase(correctAnswer);
+    private static boolean isCorrect(String gameUserAnswer, String gameCorrectAnswer) {
+        return gameUserAnswer.equalsIgnoreCase(gameCorrectAnswer);
     }
 
-    private static void attemptResult(boolean corect, String userAnswer, String correctAnswer) {
-        if (corect) {
+    private static void attemptResult(boolean gameCorect, String gameUserAnswer, String gameCorrectAnswer) {
+        if (gameCorect) {
             System.out.println("Correct!");
         } else {
-            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+            System.out.println("'" + gameUserAnswer + "' is wrong answer ;(. Correct answer was '" + gameCorrectAnswer + "'.");
         }
     }
 

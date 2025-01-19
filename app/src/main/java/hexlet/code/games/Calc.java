@@ -1,12 +1,11 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
 
 public class Calc {
-    static String task = "What is the result of the expression?";
+    private static String task = "What is the result of the expression?";
 
     private static String[][] gameQustionAnswer;
     private static String question;
@@ -20,7 +19,7 @@ public class Calc {
     private static int randomOperation;
     private static String operator;
 
-    private static Random random = Engine.random;
+    private static Random random = Engine.getRandom();
 
     public static void playGame() {
         gameQustionAnswer = fillQuestionAnswer();

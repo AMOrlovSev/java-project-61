@@ -1,58 +1,45 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Progression {
     private static String task = "What number is missing in the progression?";
-
-    private static String[][] gameQustionAnswer;
-    private static String question;
-    private static String correctAnswer;
-
     private static final int TOTAL_NUMS = 10;
-    private static String[] progression;
-    private static int unknownRandomValue;
-
     private static final int MAX_VALUE = 10;
-    private static int firstRandomValue;
-
     private static final int MAX_STEP = 10;
     private static final int MIN_STEP = 2;
-    private static int randomStep;
 
-    private static Random random = Engine.getRandom();
+    public static void run() {
+        String[][] gameData = new String[Engine.TOTAL_ATTEMPTS][Engine.ROUND_ARRAY_LENGTH];
+        for (int i = 0; i < gameData.length; i++) {
+            gameData[i] = generateRoundData();
+        }
 
-    public static void playGame() {
-        gameQustionAnswer = fillQuestionAnswer();
-        Engine.run(task, gameQustionAnswer);
+        Engine.run(task, gameData);
     }
 
-    private static String[][] fillQuestionAnswer() {
-        gameQustionAnswer = new String[Engine.TOTAL_ATTEMP][Engine.GAME_QA];
-        for (int i = 0; i < Engine.TOTAL_ATTEMP; i++) {
-            firstRandomValue = random.nextInt(MAX_VALUE);
-            randomStep = MIN_STEP + (int) (Math.random() * ((MAX_STEP - MIN_STEP) + 1));
+    public static String[] generateRoundData() {
+        int firstRandomValue = Utils.getRandom(MAX_VALUE);
+        int randomStep = MIN_STEP + (int) (Math.random() * ((MAX_STEP - MIN_STEP) + 1));
 
-            progression = createProgression(TOTAL_NUMS, firstRandomValue, randomStep);
+        String[] progression = createProgression(TOTAL_NUMS, firstRandomValue, randomStep);
+        int unknownRandomValue = Utils.getRandom(TOTAL_NUMS);
+        String temp = String.valueOf(progression[unknownRandomValue]);
+        progression[unknownRandomValue] = "..";
 
-            unknownRandomValue = random.nextInt(TOTAL_NUMS);
+        String question = Arrays.toString(progression);
+        question = question.replace("[", "").replace("]", "").replace(",", "");
 
-            var temp = String.valueOf(progression[unknownRandomValue]);
+        String correctAnswer = String.valueOf(temp);
 
-            progression[unknownRandomValue] = "..";
+        String[] roundData = new String[Engine.ROUND_ARRAY_LENGTH];
+        roundData[Engine.ROUND_POS_Q] = question;
+        roundData[Engine.ROUND_POS_A] = correctAnswer;
 
-            question = Arrays.toString(progression);
-            question = question.replace("[", "").replace("]", "").replace(",", "");
-
-            correctAnswer = String.valueOf(temp);
-
-            gameQustionAnswer[i][Engine.GAME_Q] = question;
-            gameQustionAnswer[i][Engine.GAME_A] = correctAnswer;
-        }
-        return gameQustionAnswer;
+        return roundData;
     }
 
     private static String[] createProgression(int totalNums, int firstNum, int step) {

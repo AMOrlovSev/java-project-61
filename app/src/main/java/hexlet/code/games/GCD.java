@@ -1,39 +1,33 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class GCD {
     private static String task = "Find the greatest common divisor of given numbers.";
-
-    private static String[][] gameQustionAnswer;
-    private static String question;
-    private static String correctAnswer;
-
     private static final int MAX_VALUE = 100;
-    private static int randomValue1;
-    private static int randomValue2;
-    private static Random random = Engine.getRandom();
 
-    public static void playGame() {
-        gameQustionAnswer = fillQuestionAnswer();
-        Engine.run(task, gameQustionAnswer);
+    public static void run() {
+        String[][] gameData = new String[Engine.TOTAL_ATTEMPTS][Engine.ROUND_ARRAY_LENGTH];
+        for (int i = 0; i < gameData.length; i++) {
+            gameData[i] = generateRoundData();
+        }
+
+        Engine.run(task, gameData);
     }
 
-    private static String[][] fillQuestionAnswer() {
-        gameQustionAnswer = new String[Engine.TOTAL_ATTEMP][Engine.GAME_QA];
-        for (int i = 0; i < Engine.TOTAL_ATTEMP; i++) {
-            randomValue1 = 1 + random.nextInt(MAX_VALUE - 1);
-            randomValue2 = 1 + random.nextInt(MAX_VALUE - 1);
+    public static String[] generateRoundData() {
+        int randomValue1 = 1 + Utils.getRandom(MAX_VALUE - 1);
+        int randomValue2 = 1 + Utils.getRandom(MAX_VALUE - 1);
 
-            question = randomValue1 + " " + randomValue2;
-            correctAnswer = String.valueOf(resultGCD(randomValue1, randomValue2));
+        String question = randomValue1 + " " + randomValue2;
+        String correctAnswer = String.valueOf(resultGCD(randomValue1, randomValue2));
 
-            gameQustionAnswer[i][Engine.GAME_Q] = question;
-            gameQustionAnswer[i][Engine.GAME_A] = correctAnswer;
-        }
-        return gameQustionAnswer;
+        String[] roundData = new String[Engine.ROUND_ARRAY_LENGTH];
+        roundData[Engine.ROUND_POS_Q] = question;
+        roundData[Engine.ROUND_POS_A] = correctAnswer;
+
+        return roundData;
     }
 
     private static int resultGCD(int value1, int value2) {
@@ -48,5 +42,4 @@ public class GCD {
         }
         return a;
     }
-
 }

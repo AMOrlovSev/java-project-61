@@ -10,22 +10,8 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        playGame();
-    }
-
-    public static void playGame() {
         Scanner sc = new Scanner(System.in);
-        String userChoise;
 
-        printGameVariants();
-
-        System.out.print("Your choice: ");
-        userChoise = sc.nextLine();
-
-        startGame(userChoise);
-    }
-
-    public static void printGameVariants() {
         System.out.println("\nPlease enter the game number and press Enter."
                 + "\n1 - Greet"
                 + "\n2 - Even"
@@ -34,6 +20,11 @@ public class App {
                 + "\n5 - Progression"
                 + "\n6 - Prime"
                 + "\n0 - Exit");
+
+        System.out.print("Your choice: ");
+        String userChoise = sc.nextLine();
+
+        startGame(userChoise);
     }
 
     public static void startGame(String choise) {
@@ -42,19 +33,19 @@ public class App {
                 Engine.sayHello();
                 break;
             case ("2"):
-                Even.playGame();
+                Even.run();
                 break;
             case ("3"):
-                Calc.playGame();
+                Calc.run();
                 break;
             case ("4"):
-                GCD.playGame();
+                GCD.run();
                 break;
             case ("5"):
-                Progression.playGame();
+                Progression.run();
                 break;
             case ("6"):
-                Prime.playGame();
+                Prime.run();
                 break;
             case ("0"):
             default:

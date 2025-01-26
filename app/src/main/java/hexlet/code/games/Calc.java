@@ -1,47 +1,37 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Calc {
     private static String task = "What is the result of the expression?";
-
-    private static String[][] gameQustionAnswer;
-    private static String question;
-    private static String correctAnswer;
-
     private static final int MAX_VALUE = 100;
-    private static int randomValue1;
-    private static int randomValue2;
-
     private static final int TOTAL_OPERATIONS = 3;
-    private static int randomOperation;
-    private static String operator;
 
-    private static Random random = Engine.getRandom();
+    public static void run() {
+        String[][] gameData = new String[Engine.TOTAL_ATTEMPTS][Engine.ROUND_ARRAY_LENGTH];
+        for (int i = 0; i < gameData.length; i++) {
+            gameData[i] = generateRoundData();
+        }
 
-    public static void playGame() {
-        gameQustionAnswer = fillQuestionAnswer();
-        Engine.run(task, gameQustionAnswer);
+        Engine.run(task, gameData);
     }
 
-    private static String[][] fillQuestionAnswer() {
-        gameQustionAnswer = new String[Engine.TOTAL_ATTEMP][Engine.GAME_QA];
-        for (int i = 0; i < Engine.TOTAL_ATTEMP; i++) {
-            randomValue1 = random.nextInt(MAX_VALUE);
-            randomValue2 = random.nextInt(MAX_VALUE);
+    public static String[] generateRoundData() {
+        int randomValue1 = Utils.getRandom(MAX_VALUE);
+        int randomValue2 = Utils.getRandom(MAX_VALUE);
 
-            randomOperation = random.nextInt(TOTAL_OPERATIONS);
-            operator = operation(randomOperation);
+        int randomOperation = Utils.getRandom(TOTAL_OPERATIONS);
+        String operator = operation(randomOperation);
 
-            question = randomValue1 + " " + operator + " " + randomValue2;
-            correctAnswer = String.valueOf(resultOperation(randomValue1, randomValue2, operator));
+        String question = randomValue1 + " " + operator + " " + randomValue2;
+        String correctAnswer = String.valueOf(resultOperation(randomValue1, randomValue2, operator));
 
-            gameQustionAnswer[i][Engine.GAME_Q] = question;
-            gameQustionAnswer[i][Engine.GAME_A] = correctAnswer;
-        }
-        return gameQustionAnswer;
+        String[] roundData = new String[Engine.ROUND_ARRAY_LENGTH];
+        roundData[Engine.ROUND_POS_Q] = question;
+        roundData[Engine.ROUND_POS_A] = correctAnswer;
+
+        return roundData;
     }
 
     private static String operation(int value) {

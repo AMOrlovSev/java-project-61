@@ -4,7 +4,6 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
-    private static String task = "What is the result of the expression?";
     private static final int MAX_VALUE = 100;
     private static final int TOTAL_OPERATIONS = 3;
 
@@ -14,6 +13,7 @@ public class Calc {
             gameData[i] = generateRoundData();
         }
 
+        String task = "What is the result of the expression?";
         Engine.run(task, gameData);
     }
 

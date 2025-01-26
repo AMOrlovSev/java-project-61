@@ -4,7 +4,6 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
-    private static String task = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private static final int MAX_VALUE = 1000;
 
     public static void run() {
@@ -13,6 +12,7 @@ public class Even {
             gameData[i] = generateRoundData();
         }
 
+        String task = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         Engine.run(task, gameData);
     }
 

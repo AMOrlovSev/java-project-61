@@ -6,7 +6,6 @@ import hexlet.code.Utils;
 import java.util.Arrays;
 
 public class Progression {
-    private static String task = "What number is missing in the progression?";
     private static final int TOTAL_NUMS = 10;
     private static final int MAX_VALUE = 10;
     private static final int MAX_STEP = 10;
@@ -18,6 +17,7 @@ public class Progression {
             gameData[i] = generateRoundData();
         }
 
+        String task = "What number is missing in the progression?";
         Engine.run(task, gameData);
     }
 

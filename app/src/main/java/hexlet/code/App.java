@@ -22,13 +22,13 @@ public class App {
                 + "\n0 - Exit");
 
         System.out.print("Your choice: ");
-        String userChoise = sc.nextLine();
+        String userChoice = sc.nextLine();
 
-        startGame(userChoise);
+        startGame(userChoice);
     }
 
-    public static void startGame(String choise) {
-        switch (choise) {
+    public static void startGame(String choice) {
+        switch (choice) {
             case ("1"):
                 Engine.sayHello();
                 break;
@@ -48,8 +48,9 @@ public class App {
                 Prime.run();
                 break;
             case ("0"):
-            default:
                 break;
+            default:
+                throw new RuntimeException("Incorrect input.");
         }
     }
 

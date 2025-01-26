@@ -1,44 +1,42 @@
 package hexlet.code;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
+    public static final int TOTAL_ATTEMPTS = 3;
 
-    private static String userName;
+    public static final int GAME_ARRAY_LENGTH = 2;
+    public static final int GAME_POS_Q = 0;
+    public static final int GAME_POS_A = 1;
 
-    private static int successfulAttempts;
-    public static final int TOTAL_ATTEMP = 3;
-
-    public static final int GAME_QA = 2;
-    public static final int GAME_Q = 0;
-    public static final int GAME_A = 1;
-
-    private static String question;
-    private static String userAnswer;
-    private static String correctAnswer;
-    private static boolean corect;
-
-    private static String finalResult;
-
+    private static String userName = "User Name";
     private static Scanner sc = new Scanner(System.in);
-    private static Random random = new Random();
-
-    public static Random getRandom() {
-        return random;
-    }
-
-
 
     public static void run(String task, String[][] game) {
-        successfulAttempts = 0;
-
         sayHello();
-        sayTask(task);
 
-        playGame(game);
+        System.out.println(task);
 
-        gameResult();
+        for (int i = 0; i < TOTAL_ATTEMPTS; i++) {
+            String question = (game[i][GAME_POS_Q]);
+            System.out.println("Question: " + question);
+
+            System.out.print("Your answer: ");
+            String userAnswer = sc.nextLine();
+
+            String correctAnswer = (game[i][GAME_POS_A]);
+            boolean correct = userAnswer.equalsIgnoreCase(correctAnswer);
+
+            if (correct) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                System.out.println("Let's try again, " + userName + "!");
+                return;
+            }
+        }
+
+        System.out.println("Congratulations, " + userName + "!");
     }
 
     public static void sayHello() {
@@ -47,59 +45,5 @@ public class Engine {
         userName = sc.nextLine();
 
         System.out.println("Hello, " + userName + "!");
-    }
-
-    private static void sayTask(String task) {
-        System.out.println(task);
-    }
-
-
-
-    private static void playGame(String[][] gameQustionAnswer) {
-        for (int i = 0; i < TOTAL_ATTEMP; i++) {
-
-            question = (gameQustionAnswer[i][GAME_Q]);
-            sayQuestion(question);
-
-            userAnswer = askAnswer();
-            correctAnswer = (gameQustionAnswer[i][GAME_A]);
-            corect = isCorrect(userAnswer, correctAnswer);
-
-            attemptResult(corect, userAnswer, correctAnswer);
-
-            if (corect) {
-                successfulAttempts++;
-            } else {
-                break;
-            }
-        }
-    }
-
-    private static void sayQuestion(String gameQuestion) {
-        System.out.println("Question: " + gameQuestion);
-    }
-
-    private static String askAnswer() {
-        System.out.print("Your answer: ");
-        return sc.nextLine();
-    }
-
-    private static boolean isCorrect(String gameUserAnswer, String gameCorrectAnswer) {
-        return gameUserAnswer.equalsIgnoreCase(gameCorrectAnswer);
-    }
-
-    private static void attemptResult(boolean gCorect, String gUserAnswer, String gCorAnswer) {
-        if (gCorect) {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + gUserAnswer + "' is wrong answer ;(. Correct answer was '" + gCorAnswer + "'.");
-        }
-    }
-
-
-
-    private static void gameResult() {
-        finalResult = successfulAttempts == TOTAL_ATTEMP ? "Congratulations, " : "Let's try again, ";
-        System.out.println(finalResult + userName + "!");
     }
 }

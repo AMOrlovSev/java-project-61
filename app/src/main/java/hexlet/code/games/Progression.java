@@ -3,41 +3,34 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Arrays;
-
 public class Progression {
     private static final int TOTAL_NUMS = 10;
     private static final int MAX_VALUE = 10;
     private static final int MAX_STEP = 10;
     private static final int MIN_STEP = 2;
+    private static final String TASK = "What number is missing in the progression?";
 
     public static void run() {
-        String[][] gameData = new String[Engine.TOTAL_ATTEMPTS][Engine.ROUND_ARRAY_LENGTH];
+        String[][] gameData = new String[Engine.TOTAL_ROUNDS][];
         for (int i = 0; i < gameData.length; i++) {
             gameData[i] = generateRoundData();
         }
 
-        String task = "What number is missing in the progression?";
-        Engine.run(task, gameData);
+        Engine.run(TASK, gameData);
     }
 
     public static String[] generateRoundData() {
-        int firstRandomValue = Utils.getRandom(MAX_VALUE);
+        int firstRandomValue = Utils.randomNumber(MAX_VALUE);
         int randomStep = MIN_STEP + (int) (Math.random() * ((MAX_STEP - MIN_STEP) + 1));
 
         String[] progression = createProgression(TOTAL_NUMS, firstRandomValue, randomStep);
-        int unknownRandomValue = Utils.getRandom(TOTAL_NUMS);
+        int unknownRandomValue = Utils.randomNumber(TOTAL_NUMS);
         String temp = String.valueOf(progression[unknownRandomValue]);
         progression[unknownRandomValue] = "..";
 
-        String question = Arrays.toString(progression);
-        question = question.replace("[", "").replace("]", "").replace(",", "");
-
-        String correctAnswer = String.valueOf(temp);
-
         String[] roundData = new String[Engine.ROUND_ARRAY_LENGTH];
-        roundData[Engine.ROUND_POS_Q] = question;
-        roundData[Engine.ROUND_POS_A] = correctAnswer;
+        roundData[Engine.ROUND_QUESTION] = String.join(" ", progression);
+        roundData[Engine.ROUND_ANSWER] = String.valueOf(temp);
 
         return roundData;
     }

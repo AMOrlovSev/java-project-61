@@ -5,26 +5,23 @@ import hexlet.code.Utils;
 
 public class Prime {
     private static final int MAX_VALUE = 1000;
+    private static final String TASK = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void run() {
-        String[][] gameData = new String[Engine.TOTAL_ATTEMPTS][Engine.ROUND_ARRAY_LENGTH];
+        String[][] gameData = new String[Engine.TOTAL_ROUNDS][];
         for (int i = 0; i < gameData.length; i++) {
             gameData[i] = generateRoundData();
         }
 
-        String task = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        Engine.run(task, gameData);
+        Engine.run(TASK, gameData);
     }
 
     public static String[] generateRoundData() {
-        int randomValue = Utils.getRandom(MAX_VALUE);
-
-        String question = String.valueOf(randomValue);
-        String correctAnswer = isPrime(randomValue) ? "yes" : "no";
+        int randomValue = Utils.randomNumber(MAX_VALUE);
 
         String[] roundData = new String[Engine.ROUND_ARRAY_LENGTH];
-        roundData[Engine.ROUND_POS_Q] = question;
-        roundData[Engine.ROUND_POS_A] = correctAnswer;
+        roundData[Engine.ROUND_QUESTION] = String.valueOf(randomValue);
+        roundData[Engine.ROUND_ANSWER] = isPrime(randomValue) ? "yes" : "no";
 
         return roundData;
     }

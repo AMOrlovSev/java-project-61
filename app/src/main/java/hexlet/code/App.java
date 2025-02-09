@@ -30,7 +30,7 @@ public class App {
     public static void startGame(String choice) {
         switch (choice) {
             case ("1"):
-                Engine.sayHello();
+                Cli.sayHello();
                 break;
             case ("2"):
                 Even.run();

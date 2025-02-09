@@ -9,8 +9,8 @@ public class Cli {
         return userName;
     }
 
-    public static void setUserName(String userName) {
-        Cli.userName = userName;
+    public static void setUserName(String name) {
+        Cli.userName = name;
     }
 
     public static void sayHello() {
